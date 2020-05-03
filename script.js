@@ -16,7 +16,7 @@ function createDiv(data) {
 
 function createCard(element){
     var divCard = document.createElement('div');
-    divCard.className = "col-4 border border-secondary rounded m-1 bg-warning";
+    divCard.className = "col-sm-12 col-lg-4 col-md-4 border border-secondary rounded m-1 bg-warning";
     divCard.appendChild(headingDiv(element.state));
     divCard.appendChild(horizontalLine());
     var divActive = createDivElement();
