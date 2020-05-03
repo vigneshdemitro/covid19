@@ -60,7 +60,7 @@ function headingDiv(data){
 
 function createDivElement(){
     var divElement = document.createElement('div');
-    divElement.className = "row d-flex justify-content-between text-white m-1 font-italic";
+    divElement.className = "row d-flex justify-content-between text-black m-1 font-italic";
     return divElement;
 }
 
