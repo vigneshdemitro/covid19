@@ -73,7 +73,7 @@ function createSpanElement(data){
 
 function updateTimeDiv(data){
     var divTime = document.createElement('div');
-    divTime.className = "row d-flex justify-content-end text-black font-weight-normal m-1";
+    divTime.className = "row d-flex justify-content-end text-danger font-weight-normal m-1";
     divTime.innerHTML = data;
     return divTime;
 }
