@@ -5,19 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covid-19 Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="script.js"></script>
-    <style>
-        body{
-            background-color: rgba(173, 18, 18, 0.918);
-        }
-    </style>
 </head>
 
 <body class="bg-dark">
     <div class="container">
-        <div class="row d-flex justify-content-center text-white font-weight-bold">
+        <div class="row navbar bg-light d-flex justify-content-center font-weight-bold">
             <h1>COVID-19</h1>
         </div>
         <br>
@@ -25,7 +20,23 @@
             <p>Status of the pandemic disease in India State-Wise</p>
         </div>
         <br>
+        <div class="row d-flex justify-content-center text-white font-weight-normal" id="dashboardStyle">
+            <p>Choose Your Dashboard Style</p>
+        </div>
+        <br>
         <div class="row d-flex justify-content-around" id="infoDiv">
+            <div class="col-sm-12 col-md-6 text-primary">
+                <div class="d-flex justify-content-center">
+                    <img src="tableStyle.png" alt="Table" width="350px" height="250px" onclick="createTable()"
+                        style="cursor: pointer">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 text-primary">
+                <div class="d-flex justify-content-center">
+                    <img src="cardStyle.png" alt="Card" width="300px" height="250px" onclick="createDiv()"
+                        style="cursor: pointer;">
+                </div>
+            </div>
         </div>
         <br>
         <footer>
@@ -34,11 +45,6 @@
                             src="https://counter11.stat.ovh/private/freecounterstat.php?c=6lq5zf9hgw1ndcmwmzcl8k859b4juz4b"
                             border="0" title="visitor counter" alt="visitor counter"></a></span>
             </div>
-            <div class="row d-flex justify-content-center text-white font-weight-normal">Made with</div>
-            <div class="row d-flex justify-content-center">
-                <img src="love.png" alt="Love" width="50px" height="35px">
-            </div>
-            <div class="row d-flex justify-content-center text-white font-weight-normal">By</div>
             <div class="row d-flex justify-content-center text-white font-weight-normal"
                 onclick="window.open('https://github.com/vigneshdemitro','mywindow')" style="cursor:pointer;">
                 <span>
@@ -48,6 +54,15 @@
             </div>
         </footer>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

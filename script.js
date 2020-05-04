@@ -1,18 +1,28 @@
+var data = null;
+
 (function () {
     fetch("https://api.covid19india.org/data.json")
         .then((response) => {
             return response.json();
-        }).then((data) => {
-            createDiv(data);
+        }).then((jsondata) => {
+            data = jsondata;
         })
 })();
 
 
-function createDiv(data) {
+function createDiv() {
+    var dashBoard = document.getElementById('dashboardStyle');
+    dashBoard.innerHTML = "<u>Click here to View as Table</u>";
+    dashBoard.className = "row d-flex justify-content-center text-primary"
+    dashBoard.setAttribute('onclick','createTable()');
+    dashBoard.style = "cursor:pointer";
     var mainDiv = document.getElementById('infoDiv')
+    mainDiv.innerHTML = "";
+    mainDiv.className ="row d-flex justify-content-between"
     data.statewise.forEach(element => {
         mainDiv.appendChild(createCard(element));
     });
+    
 }
 
 
@@ -80,4 +90,66 @@ function updateTimeDiv(data){
     divTime.className = "row d-flex justify-content-end text-danger font-weight-normal m-1 p-1";
     divTime.innerHTML = data;
     return divTime;
+}
+
+
+function createTable() {
+    var dashBoard = document.getElementById('dashboardStyle');
+    dashBoard.innerHTML = "<u>Click here to View as Card</u>";
+    dashBoard.className = "row d-flex justify-content-center text-primary"
+    dashBoard.setAttribute('onclick','createDiv()');
+    dashBoard.style = "cursor:pointer";
+    var mainDiv = document.getElementById('infoDiv')
+    mainDiv.innerHTML = "";
+    var tdKeys = ["active","confirmed","recovered","deaths","lastupdatedtime"]
+    // var mainDiv = document.getElementById('infoDiv');
+    mainDiv.className = "table-responsive";
+    var table = document.createElement('table');
+    table.className = "table table-bordered table-light table-striped";
+    var thead = document.createElement('thead');
+    thead.className = "bg-warning"
+    var th1 = document.createElement('th');
+    th1.innerHTML = 'STATE';
+    thead.appendChild(th1);
+    var th2 = document.createElement('th');
+    th2.innerHTML = 'ACTIVE';
+    thead.appendChild(th2);
+    var th3 = document.createElement('th');
+    th3.innerHTML = 'CONFIRMED';
+    thead.appendChild(th3);
+    var th4 = document.createElement('th');
+    th4.innerHTML = 'RECOVERED';
+    thead.appendChild(th4);
+    var th5 = document.createElement('th');
+    th5.innerHTML = 'DEATH';
+    thead.appendChild(th5);
+    var th6 = document.createElement('th');
+    th6.innerHTML = 'LAST UPDATED';
+    thead.appendChild(th6);
+    table.appendChild(thead);
+    var tBody = document.createElement('tbody');
+    tBody.id = "tableInfo";
+    data.statewise.forEach(element => {
+        console.log(element)
+        var tr = document.createElement('tr');
+        var th = document.createElement('th');
+        th.setAttribute('scope','row')
+        th.className = "text-uppercase"
+        th.innerHTML = element.state;
+        tr.appendChild(th)
+        tdKeys.forEach((key)=>{
+            var td = document.createElement('td');
+            td.innerHTML = element[key];
+            tr.appendChild(td)
+        })
+        tBody.appendChild(tr);
+    });
+    table.appendChild(tBody);
+    mainDiv.appendChild(table);
+}
+
+function createTD(tddata){
+    console.log(tddata)
+    var td = document.createElement('td');
+    td.innerHTML = tddata;
 }
