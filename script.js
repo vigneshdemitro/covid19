@@ -1,11 +1,12 @@
-function onLoadData() {
+(function () {
     fetch("https://api.covid19india.org/data.json")
         .then((response) => {
             return response.json();
         }).then((data) => {
             createDiv(data);
         })
-}
+})();
+
 
 function createDiv(data) {
     var mainDiv = document.getElementById('infoDiv')
@@ -14,9 +15,10 @@ function createDiv(data) {
     });
 }
 
+
 function createCard(element){
     var divCard = document.createElement('div');
-    divCard.className = "col-sm-12 col-lg-4 col-md-4 border border-secondary rounded m-1 bg-warning";
+    divCard.className = "col-sm-12 col-lg-4 col-md-4 border border-secondary rounded m-1 bg-white";
     divCard.appendChild(headingDiv(element.state));
     divCard.appendChild(horizontalLine());
     var divActive = createDivElement();
@@ -52,8 +54,10 @@ function horizontalLine(){
 
 function headingDiv(data){
     var divHead = document.createElement('div');
-    divHead.className = "row d-flex justify-content-center text-danger font-weight-bold";
-    divHead.innerHTML = data;
+    divHead.className = "row d-flex justify-content-center text-danger text-uppercase m-2";
+    var heading = document.createElement('h4');
+    heading.innerHTML = data;
+    divHead.appendChild(heading);
     return divHead;
 }
 
@@ -73,7 +77,7 @@ function createSpanElement(data){
 
 function updateTimeDiv(data){
     var divTime = document.createElement('div');
-    divTime.className = "row d-flex justify-content-end text-danger font-weight-normal m-1";
+    divTime.className = "row d-flex justify-content-end text-danger font-weight-normal m-1 p-1";
     divTime.innerHTML = data;
     return divTime;
 }
